@@ -9,7 +9,7 @@ describe('Orange HRM Test', () => {
     errorAlert: '.oxd-alert--error'
   }
 
-  it('Login - sucess', () => {
+  it.only('User - Info - Update', () => {
     cy.visit('/auth/login');
     cy.wait(5000);
     cy.get(selectorList.usernameInput).should('be.visible').type(userData.userSucess.username);
