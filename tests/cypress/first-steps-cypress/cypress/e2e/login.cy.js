@@ -17,5 +17,6 @@ describe('Orange HRM Test', () => {
     cy.get('#app [name="password"]').click();
     cy.get('#app [name="password"]').type('test');
     cy.get('#app button.oxd-button').click();
+    cy.get('.oxd-alert--error').should('be.visible');
   })
 })
