@@ -1,16 +1,15 @@
 import userData from '../fixtures/user/user-data.json'
 import LoginPage from '../pages/login.js'
+import DashboardPage  from '../pages/dashboard.js';
+import MenuPages from '../pages/menuPages.js';
 
 
 const loginPage = new LoginPage();
-
+const dashboardPage = new DashboardPage();
+const menuPages = new MenuPages();
 
 describe('Orange HRM Test', () => {
   const selectorList = {
-   
-    dashboardGrid: '.orangehrm-dashboard-grid',
-  
-    pathInfo: '/web/index.php/pim/viewPersonalDetails/empNumber/7',
     firstNameInput: ".orangehrm-firstname",
     middleNameInput: ".orangehrm-middlename",
     lastNameInput: ".orangehrm-lastname",
@@ -23,9 +22,10 @@ describe('Orange HRM Test', () => {
   it.only('User - Info - Update', () => {
     loginPage.accessLoginPage();
     loginPage.loginWithUser(userData.userSucess.username, userData.userSucess.password);
+    dashboardPage.verifyDashboardIsVisible();
+    menuPages.accessInfoMenu();
 
-    // cy.location('pathname').should('eq', '/web/index.php/dashboard/index');
-    // cy.get(selectorList.dashboardGrid).should('be.visible');
+
     // cy.get("[href='/web/index.php/pim/viewMyDetails']").click();
     // cy.location('pathname').should('eq', selectorList.pathInfo);
     // cy.get(selectorList.firstNameInput).clear().type('FirstName');
