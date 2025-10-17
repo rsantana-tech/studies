@@ -29,10 +29,11 @@ describe('Orange HRM Test', () => {
     cy.get(selectorList.firstNameInput).clear().type('FirstName');
     cy.get(selectorList.middleNameInput).clear().type('MiddleName');
     cy.get(selectorList.lastNameInput).clear().type('LastName');
-    cy.get(selectorList.genericSelector).eq(4).clear().type('999999999');
+    cy.get(selectorList.genericSelector).eq(4).clear().type('testnickname');
     cy.get(selectorList.genericSelector).eq(5).clear().type('999999999');
-    cy.get(selectorList.genericSelector).eq(6).clear().type('license');
-    cy.get(selectorList.genericSelector).eq(7).clear().type('2025-10-16');
+    cy.get(selectorList.genericSelector).eq(6).clear().type('999999999');
+    cy.get(selectorList.genericSelector).eq(7).clear().type('license');
+    cy.get(selectorList.genericSelector).eq(8).clear().type('2025-10-16');
     cy.get(selectorList.closeButtonDatePicker).click();
     cy.get(selectorList.genericComboBox).eq(0).click();
     cy.get('[role="listbox"]').contains('[role="option"]', 'Brazilian').click();
