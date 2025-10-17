@@ -13,7 +13,8 @@ describe('Orange HRM Test', () => {
     lastNameInput: ".orangehrm-lastname",
     genericSelector: '.oxd-input',
     closeButtonDatePicker: '.--close',
-    buttonSave: '.orangehrm-left-space'
+    buttonSave: '.orangehrm-left-space',
+    genericComboBox: '.oxd-select-text-input',
   }
 
   it.only('User - Info - Update', () => {
@@ -33,6 +34,13 @@ describe('Orange HRM Test', () => {
     cy.get(selectorList.genericSelector).eq(6).clear().type('license');
     cy.get(selectorList.genericSelector).eq(7).clear().type('2025-10-16');
     cy.get(selectorList.closeButtonDatePicker).click();
+    cy.get(selectorList.genericComboBox).eq(0).click();
+    cy.get('[role="listbox"]').contains('[role="option"]', 'Brazilian').click();
+    cy.get(selectorList.genericComboBox).eq(1).click();
+    cy.get('[role="listbox"]').contains('[role="option"]', 'Single').click();
+    cy.get(selectorList.genericSelector).eq(8).clear().type('2025-10-16');
+    cy.get(selectorList.closeButtonDatePicker).click();
+    cy.contains('.--gender-grouped-field label', 'Female').click();
     cy.get(selectorList.buttonSave).eq(0).click();
     cy.get('body').should('contain', 'Successfully');
     cy.get('.oxd-toast-close--success').click();
