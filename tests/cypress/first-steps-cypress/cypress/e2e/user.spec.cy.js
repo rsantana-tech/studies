@@ -24,11 +24,6 @@ describe('Orange HRM Test', () => {
     loginPage.accessLoginPage();
     loginPage.loginWithUser(userData.userSucess.username, userData.userSucess.password);
 
-
-    // cy.visit('/auth/login');
-    // cy.get(selectorList.usernameInput).should('be.visible').type(userData.userSucess.username);
-    // cy.get(selectorList.passwordInput).type(userData.userSucess.password);
-    // cy.get(selectorList.loginButton).click();
     // cy.location('pathname').should('eq', '/web/index.php/dashboard/index');
     // cy.get(selectorList.dashboardGrid).should('be.visible');
     // cy.get("[href='/web/index.php/pim/viewMyDetails']").click();
