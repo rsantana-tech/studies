@@ -4,10 +4,10 @@ This folder contains study projects and examples for several test automation fra
 
 Structure
 ---------
-- `cypress/` — Cypress study project with Page Objects, fixtures and example specs. (See `cypress/README.md` inside this folder for details.)
-- `selenium/` — (placeholder) Add Selenium/JavaScript or Selenium/Python examples here.
-- `pytest/` — (placeholder) Add pytest examples and fixtures here.
-- `playwright/` — (placeholder) Add Playwright examples here.
+- `cypress/` — Cypress study project with Page Objects, fixtures and example specs. (See `cypress/README.md` )
+- `selenium/`
+- `pytest/` 
+- `playwright/`
 
 Purpose
 -------
@@ -31,22 +31,6 @@ npx cypress run
 
 Add your `baseUrl` in `cypress.config.js` if tests point to a local or remote app instance.
 
-Placeholders for other frameworks
---------------------------------
-I intentionally left folders for Selenium, pytest and Playwright as placeholders. You can populate them with small examples following these suggestions:
-
-- Selenium (JavaScript or Python): a simple test that opens a browser, navigates to a page, and asserts an element is visible. Use WebDriver manager to avoid manual binary installs.
-- pytest (Python): unit and integration tests using `pytest` and `requests` or `selenium` for browser tests. Add `requirements.txt` and virtualenv instructions.
-- Playwright: a minimal Playwright project using `@playwright/test` with an example spec and a `playwright.config.ts`.
-
-CI suggestions
---------------
-- Add lightweight CI workflows per tool; for Cypress and Playwright use official GitHub Actions or community actions that handle browsers.
-- Example for Cypress is available in the repository root `README.md` (GitHub Actions snippet).
-
-Contributions
--------------
-Feel free to add small, focused examples for any of the listed frameworks. Keep each example minimal, documented, and include a README inside each framework folder explaining how to run it.
 
 License
 -------
