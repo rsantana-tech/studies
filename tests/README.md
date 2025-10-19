@@ -50,44 +50,147 @@ Goals
 - Illustrate common patterns: page objects, fixtures, test data, and simple assertions.
 - Show how to run tests locally and in CI (GitHub Actions examples and tips).
 
-Prerequisites
--------------
+# tests — Exemplos de estudo de automação de testes (pt-BR)
 
-- Node.js (recommended LTS) for Cypress and Playwright JS examples
-- npm or yarn
-- Python 3.8+ for Selenium/pytest examples
-- Browser drivers when required (chromedriver/geckodriver) for Selenium
+Esta pasta reúne exemplos e pequenos projetos para aprender ferramentas e frameworks de automação de testes. O objetivo é oferecer exemplos mínimos e reproduzíveis que você possa executar localmente para estudar: Cypress (E2E em JS), Selenium (WebDriver), pytest (Python) e Playwright.
 
-Quick start — Cypress
----------------------
+Estrutura
+---------
 
-1. Open the Cypress project (example path used in this repository):
+- `cypress/` — Projetos e exemplos com Cypress (page objects, fixtures e specs). Veja o `cypress/README.md` dentro de cada projeto Cypress para detalhes.
+- `selenium/` — Exemplos e notas do Selenium (Python/JS) quando disponíveis.
+- `pytest/` — Exemplos com pytest (Python).
+- `playwright/` — Exemplos com Playwright (JS/TS/Python).
+
+Objetivos
+---------
+
+- Fornecer exemplos executáveis e mínimos para estudo.
+- Demonstrar padrões comuns: page objects, fixtures, dados de teste e assertivas simples.
+- Mostrar como executar localmente e em CI (GitHub Actions) com dicas práticas.
+
+Pré-requisitos
+--------------
+
+- Node.js (versão LTS recomendada) para exemplos em Cypress e Playwright (JS)
+- npm ou yarn
+- Python 3.8+ para exemplos em Selenium/pytest
+- Drivers de navegador quando necessário (chromedriver, geckodriver) para Selenium
+
+Início rápido — Cypress
+----------------------
+
+1. Acesse o projeto de exemplo (exemplo de caminho neste repositório):
 
 ```bash
 cd tests/cypress/first-steps-cypress
 npm install
 ```
 
-2. Run interactively (opens the GUI):
+2. Executar de forma interativa (abre a GUI):
 
 ```bash
 npx cypress open
 ```
 
-3. Or run headless (CI-friendly):
+3. Ou executar headless (modo CI):
 
 ```bash
 npx cypress run
 ```
 
-Notes:
-- Set or verify `baseUrl` in `cypress.config.js` if tests target a running application.
-- Use fixtures in `cypress/fixtures/` to provide test data for repeatable runs.
+Observações:
+- Configure `baseUrl` em `cypress.config.js` se os testes acessarem uma aplicação local/remo­ta.
+- Use fixtures em `cypress/fixtures/` para dados de teste estáveis.
 
-Quick start — Selenium (Python example)
+Início rápido — Selenium (exemplo em Python)
+------------------------------------------
+
+1. Crie um virtualenv e instale dependências:
+
+```bash
+python -m venv .venv
+source .venv/bin/activate
+pip install -r tests/selenium/requirements.txt
+```
+
+2. Garanta que o driver do navegador esteja disponível (chromedriver/geckodriver). Em muitos sistemas você pode instalar via gerenciador de pacotes ou colocá-lo no PATH.
+
+3. Execute um exemplo:
+
+```bash
+python tests/selenium/examples/test_login.py
+```
+
+Início rápido — pytest
+---------------------
+
+Se houver exemplos com pytest em `tests/pytest`:
+
+```bash
+cd tests/pytest
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+pytest -q
+```
+
+Início rápido — Playwright (JavaScript)
 --------------------------------------
 
-1. Create a virtual environment and install dependencies:
+1. Instale dependências e navegadores:
+
+```bash
+cd tests/playwright
+npm install
+npx playwright install
+```
+
+2. Execute os testes:
+
+```bash
+npx playwright test
+```
+
+Dicas para CI (GitHub Actions)
+------------------------------
+
+- Use as actions oficiais para Node.js / Python e instale dependências de navegador. Um fluxo típico inclui:
+	- checkout
+	- setup-node (ou setup-python)
+	- instalar dependências (npm ci / pip install)
+	- instalar navegadores (npx playwright install)
+	- executar testes (npx cypress run / npx playwright test)
+
+- Faça cache de node_modules ou do cache do pip para acelerar builds.
+- Execute em modo headless no CI e envie artefatos (screenshots, vídeos, relatórios) em caso de falha.
+
+Resolução de problemas
+----------------------
+
+- Se um teste não localizar elementos, verifique os seletores e considere usar `.should('be.visible')` (Cypress) ou esperas explícitas (Selenium/Playwright).
+- Mantenha dados de teste (fixtures) pequenos e determinísticos para reduzir instabilidade.
+- Quando os testes dependem de uma aplicação em execução, inclua as etapas de inicialização da aplicação no workflow de CI (ou use containers de serviço).
+
+Onde encontrar cada exemplo
+---------------------------
+
+- Cypress: `tests/cypress/**`
+- Selenium: `tests/selenium/**` (pode faltar em alguns snapshots)
+- pytest: `tests/pytest/**`
+- Playwright: `tests/playwright/**`
+
+Contribuindo / estendendo
+------------------------
+
+Ao adicionar novos exemplos, siga estas recomendações:
+- Mantenha exemplos pequenos e autocontidos.
+- Adicione um README curto na pasta do exemplo descrevendo como executar.
+- Prefira comandos reprodutíveis (use lockfiles ou requirements pinados).
+
+Licença
+-------
+MIT — sinta-se à vontade para reutilizar e adaptar para aprendizado.
 
 ```bash
 python -m venv .venv
