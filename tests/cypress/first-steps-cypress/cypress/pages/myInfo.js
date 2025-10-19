@@ -6,7 +6,7 @@ class MyInfo {
             lastNameInput: ".orangehrm-lastname",
             genericSelector: '.oxd-input',
             closeButtonDatePicker: '.--close',
-            buttonSave: '.orangehrm-left-space',
+            buttonSave: "[type='submit']",
             genericComboBox: '.oxd-select-text-input',
             genericRoleBox: '[role="listbox"]',
             genderRadioButton: '.--gender-grouped-field label',

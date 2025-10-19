@@ -4,7 +4,10 @@ import DashboardPage  from '../pages/dashboard.js';
 import MenuPages from '../pages/menuPages.js';
 import MyInfo from '../pages/myInfo.js';
 
+const Chance = require('chance');
 
+
+const chance = new Chance();
 const loginPage = new LoginPage();
 const dashboardPage = new DashboardPage();
 const menuPages = new MenuPages();
@@ -17,8 +20,8 @@ describe('Orange HRM Test', () => {
     loginPage.loginWithUser(userData.userSucess.username, userData.userSucess.password);
     dashboardPage.verifyDashboardIsVisible();
     menuPages.accessInfoMenu();
-    infoPage.fillPersonalDetails('Anna', 'laila', 'Silva');
-    infoPage.fillEmploymentDetails('12345', '67890', 'A1234567', '2025-12-31');
+    infoPage.fillPersonalDetails(chance.first(),chance.last(), chance.last());
+    infoPage.fillEmploymentDetails(chance.natural({ min: 10000, max: 99999 }),chance.natural({ min: 10000, max: 99999 }), chance.natural({ min: 10000, max: 99999 }), '2025-12-31');
     infoPage.saveUserInfo();
   })
 
