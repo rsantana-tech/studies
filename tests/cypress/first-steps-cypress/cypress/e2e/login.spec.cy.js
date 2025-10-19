@@ -1,8 +1,9 @@
 import userData from '../fixtures/user/user-data.json'
 import LoginPage from '../pages/login.js'
-
+import DashboardPage  from '../pages/dashboard.js';
 
 const loginPage = new LoginPage();
+const dashboardPage = new DashboardPage();
 
 
 describe('Login - Orange HRM Test', () => {
@@ -16,6 +17,8 @@ describe('Login - Orange HRM Test', () => {
   it('Login - Sucess', () => {
     loginPage.accessLoginPage();
     loginPage.loginWithUser(userData.userSucess.username, userData.userSucess.password);
+    dashboardPage.verifyDashboardIsVisible(); 
+  
   })  
 
 })
